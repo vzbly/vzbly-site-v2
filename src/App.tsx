@@ -148,6 +148,7 @@ function App() {
           </div>
         </div>
       </div>
+      </div>
 
       <style>{`
         @keyframes fade-in {
