@@ -165,7 +165,6 @@ function App() {
           animation: fade-in 1s ease-out;
         }
       `}</style>
-      </div>
     </>
   );
 }
