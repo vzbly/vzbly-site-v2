@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import heroVideo from '../assets/hero-vzbly-720.webm';
+import heroVideoDesktop from '../assets/hero-vzbly-720.webm';
+import heroVideoMobile from '../assets/hero-vzbly-mobile.webm';
 
 interface HeroVideoProps {
   onComplete?: () => void;
@@ -10,6 +11,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [containerHeight, setContainerHeight] = useState('200vh');
+  const [isMobile, setIsMobile] = useState(false);
   const isScrubbingRef = useRef(false);
   const hasUserScrolledRef = useRef(false);
   const videoCompleteRef = useRef(false);
@@ -19,12 +21,34 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
   const targetTimeRef = useRef(0);
   const animationFrameRef = useRef<number>();
 
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    // Reset video state when device type changes
+    videoCompleteRef.current = false;
+    onCompleteCalledRef.current = false;
+    hasUserScrolledRef.current = false;
+    isScrubbingRef.current = false;
+    setScrollProgress(0);
+    
     // Ensure page starts at top when video loads
     window.scrollTo(0, 0);
+    
+    // Reload video when device type changes
+    video.load();
 
     // Ensure video is loaded and ready
     const handleLoadedMetadata = () => {
@@ -331,7 +355,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
       window.removeEventListener('wheel', handleScroll);
       window.removeEventListener('wheel', preventScrollPast);
     };
-  }, []);
+  }, [isMobile, onComplete]);
 
   return (
     <div
@@ -352,6 +376,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
         }}
       >
         <video
+          key={isMobile ? 'mobile' : 'desktop'}
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-contain md:object-cover"
           playsInline
@@ -367,7 +392,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
             height: '100%',
           }}
         >
-          <source src={heroVideo} type="video/webm" />
+          <source src={isMobile ? heroVideoMobile : heroVideoDesktop} type="video/webm" />
         </video>
         
         {/* Progress indicator */}
