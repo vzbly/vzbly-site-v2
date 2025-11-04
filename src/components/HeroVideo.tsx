@@ -353,7 +353,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
       >
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain md:object-cover"
           playsInline
           muted
           autoPlay
@@ -365,7 +365,6 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
             left: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
           }}
         >
           <source src={heroVideo} type="video/webm" />
