@@ -11,7 +11,14 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [containerHeight, setContainerHeight] = useState('200vh');
-  const [isMobile, setIsMobile] = useState(false);
+  // Detect mobile device - check immediately on mount
+  const [isMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+  
   const isScrubbingRef = useRef(false);
   const hasUserScrolledRef = useRef(false);
   const videoCompleteRef = useRef(false);
@@ -20,18 +27,6 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
   const lastProgressRef = useRef(0);
   const targetTimeRef = useRef(0);
   const animationFrameRef = useRef<number>();
-
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -355,7 +350,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
       window.removeEventListener('wheel', handleScroll);
       window.removeEventListener('wheel', preventScrollPast);
     };
-  }, [isMobile, onComplete]);
+  }, [isMobile]);
 
   return (
     <div
