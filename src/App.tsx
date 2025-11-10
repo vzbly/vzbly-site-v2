@@ -62,13 +62,13 @@ function App() {
                   src={logoSvg} 
                   alt="Vzbly Logo" 
                   className="w-16 h-16 md:w-20 md:h-20 relative z-10 drop-shadow-lg"
-                  style={{ transform: 'scale(2.4)' }}
+                  style={{ transform: 'scale(4)', marginBottom: '10px', imageRendering: 'auto' }}
                 />
               </div>
             )}
             <div className="flex items-center justify-center">
-              <h1 className="text-6xl md:text-7xl font-bold text-gray-900">
-                Vzbly.ca
+              <h1 className="text-6xl md:text-7xl font-bold text-gray-900 hidden">
+                Vzbly
               </h1>
             </div>
 
@@ -84,7 +84,7 @@ function App() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto py-8">
             {[
               { icon: BarChart3, label: 'Custom visualizations', color: '#4581db' },
-              { icon: Workflow, label: 'Update automations', color: '#db690d' },
+              { icon: Workflow, label: 'Automated updates', color: '#db690d' },
               { icon: Sparkles, label: 'Performance analytics', color: '#63a747' },
               { icon: Globe, label: 'Web solutions', color: '#e1b015' },
             ].map((item, index) => (
