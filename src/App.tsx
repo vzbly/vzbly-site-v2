@@ -4,6 +4,10 @@ import ParticleNetwork from './components/ParticleNetwork';
 import HeroVideo from './components/HeroVideo';
 import logoSvg from './assets/logo.svg';
 
+import Clarity from '@microsoft/clarity';
+const projId = 'u3yrvkjq4k';
+Clarity.init(projId);
+
 function App() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -99,51 +103,18 @@ function App() {
             ))}
           </div>
 
-          <div className="max-w-md mx-auto space-y-4">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Be the first to know when we launch
-            </h2>
 
-            <form onSubmit={handleSubmit} className="relative">
-              <div className="flex gap-2">
-                <div className="relative flex-1">
-                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4581db] focus:border-transparent transition-all"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="px-6 py-4 bg-[#4581db] text-white rounded-xl font-semibold hover:bg-[#3a6fc4] transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95"
-                >
-                  <span className="hidden sm:inline">Notify Me</span>
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-
-              {submitted && (
-                <div className="absolute -bottom-12 left-0 right-0 text-[#63a747] text-sm animate-fade-in">
-                  Thanks! We'll be in touch soon!
-                </div>
-              )}
-            </form>
-          </div>
 
           <div className="pt-8 space-y-4">
             <p className="text-gray-900 text-lg font-medium">
-              Coming Soon
+              Coming soon
             </p>
             <div className="flex justify-center gap-8 text-sm text-gray-600">
-              <span>Interactive Dashboards</span>
+              <span>Interactive dashboards</span>
               <span className="hidden sm:inline">•</span>
-              <span>Real-time Analytics</span>
+              <span>Real-time analytics</span>
               <span className="hidden sm:inline">•</span>
-              <span>Data Pipelines</span>
+              <span>Data pipelines</span>
             </div>
           </div>
         </div>

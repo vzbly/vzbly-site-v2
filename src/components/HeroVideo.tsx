@@ -359,6 +359,10 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
       style={{
         height: containerHeight,
         zIndex: 50,
+        margin: 0,
+        padding: 0,
+        top: 0,
+        left: 0,
       }}
     >
       <div 
@@ -366,8 +370,11 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
         style={{
           position: 'sticky',
           top: 0,
+          left: 0,
           width: '100%',
           height: '100vh',
+          margin: 0,
+          padding: 0,
         }}
       >
         <video
