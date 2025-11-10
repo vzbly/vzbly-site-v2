@@ -355,7 +355,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
   return (
     <div
       ref={containerRef}
-      className="w-full bg-black relative"
+      className={`w-full relative ${isMobile ? 'bg-white' : 'bg-black'}`}
       style={{
         height: containerHeight,
         zIndex: 50,
@@ -366,7 +366,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
       }}
     >
       <div 
-        className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden"
+        className={`sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden ${isMobile ? 'bg-white' : ''}`}
         style={{
           position: 'sticky',
           top: 0,
@@ -375,6 +375,7 @@ export default function HeroVideo({ onComplete }: HeroVideoProps) {
           height: '100vh',
           margin: 0,
           padding: 0,
+          backgroundColor: isMobile ? 'white' : 'transparent',
         }}
       >
         <video

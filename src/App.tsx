@@ -57,11 +57,11 @@ function App() {
       >
         <ParticleNetwork />
 
-        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-12">
-        <div className="max-w-5xl w-full mx-auto text-center space-y-12">
-          <div className="space-y-6 animate-fade-in">
+        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-4 md:py-12">
+        <div className="max-w-5xl w-full mx-auto text-center space-y-4 md:space-y-12">
+          <div className="space-y-3 md:space-y-6 animate-fade-in">
             {!showVideo && (
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-4 md:mb-8">
                 <img 
                   src={logoSvg} 
                   alt="Vzbly Logo" 
@@ -76,7 +76,7 @@ function App() {
               </h1>
             </div>
 
-            <p className="text-2xl md:text-3xl font-light text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-2xl lg:text-3xl font-light text-gray-700 max-w-3xl mx-auto leading-relaxed px-2">
               Transforming data into{' '}
               <span className="font-semibold text-gray-900">interactive stories</span>
               {' '}through visualization, automation, and intelligent analytics
@@ -85,7 +85,7 @@ function App() {
 
           {/* <DataVisualization /> */}
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-4xl mx-auto py-4 md:py-8">
             {[
               { icon: BarChart3, label: 'Custom visualizations', color: '#4581db' },
               { icon: Workflow, label: 'Automated updates', color: '#db690d' },
@@ -94,22 +94,22 @@ function App() {
             ].map((item, index) => (
               <div
                 key={item.label}
-                className="group p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:border-gray-300"
+                className="group p-3 md:p-6 rounded-xl md:rounded-2xl bg-gray-50 border border-gray-200 hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:border-gray-300"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <item.icon className={`w-8 h-8 mx-auto mb-3 group-hover:scale-110 transition-transform`} style={{ color: item.color }} />
-                <p className="text-sm font-medium text-gray-700">{item.label}</p>
+                <item.icon className={`w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 md:mb-3 group-hover:scale-110 transition-transform`} style={{ color: item.color }} />
+                <p className="text-xs md:text-sm font-medium text-gray-700">{item.label}</p>
               </div>
             ))}
           </div>
 
 
 
-          <div className="pt-8 space-y-4">
-            <p className="text-gray-900 text-lg font-medium">
+          <div className="pt-4 md:pt-8 space-y-2 md:space-y-4">
+            <p className="text-gray-900 text-base md:text-lg font-medium">
               Coming soon
             </p>
-            <div className="flex justify-center gap-8 text-sm text-gray-600">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm text-gray-600">
               <span>Interactive dashboards</span>
               <span className="hidden sm:inline">•</span>
               <span>Real-time analytics</span>
