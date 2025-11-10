@@ -103,7 +103,15 @@ function App() {
             ))}
           </div>
 
-
+          <div className="pt-4 md:pt-8">
+            <a
+              href="mailto:info@vzbly.ca"
+              className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#4581db] text-white rounded-xl font-semibold hover:bg-[#3a6fc4] transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              <Mail className="w-5 h-5" />
+              <span>Contact us</span>
+            </a>
+          </div>
 
           <div className="pt-4 md:pt-8 space-y-2 md:space-y-4">
             <p className="text-gray-900 text-base md:text-lg font-medium">
